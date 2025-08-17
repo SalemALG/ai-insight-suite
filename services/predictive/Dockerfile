@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /app
 
-COPY ai-insight-suite/services/predictive/requirements.txt /tmp/req.txt
+COPY services/predictive/requirements.txt /tmp/req.txt
 RUN pip install --no-cache-dir -r /tmp/req.txt
 
 COPY . /app

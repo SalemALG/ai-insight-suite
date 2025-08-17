@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /app
 
-COPY ai-insight-suite/services/doc-automation/requirements.txt /tmp/req.txt
+COPY services/doc-automation/requirements.txt /tmp/req.txt
 RUN pip install --no-cache-dir -r /tmp/req.txt
 
 COPY . /app

@@ -7,19 +7,25 @@ Two-service mono-repo for a 2-person agency to deliver document automation (OCR+
 - **predictive**: Upload time-series data → forecasts and optional churn scoring → Streamlit dashboard + REST read endpoints.
 
 ### Quickstart (Docker Compose)
-1. Copy env and adjust as needed:
+1. **Prerequisites**: Install Docker Desktop for Mac/Windows or Docker Engine for Linux
+2. **Clone the repository**:
    ```bash
-   cp .env.example .env
+   git clone https://github.com/SalemALG/ai-insight-suite.git
+   cd ai-insight-suite
    ```
-2. Build and run all services:
+3. **Start all services**:
    ```bash
    docker compose -f infra/docker-compose.yml up --build
    ```
-3. Open:
-   - Doc Automation API: `http://localhost:8001/docs`
-   - Doc Automation Streamlit: `http://localhost:8501`
-   - Predictive API: `http://localhost:8002/docs`
-   - Predictive Streamlit: `http://localhost:8502`
+4. **Access the applications**:
+   - 🔧 **Doc Automation API**: http://localhost:8001/docs
+   - 📱 **Doc Automation Demo**: http://localhost:8501  
+   - 📊 **Predictive API**: http://localhost:8002/docs
+   - 📈 **Predictive Dashboard**: http://localhost:8502
+
+### Quick Test
+- Upload `services/doc-automation/examples/sample_invoice.txt` to the Doc Demo
+- Upload `services/predictive/examples/retail_sales.csv` to the Predictive Dashboard
 
 ### Local Dev
 ```bash
