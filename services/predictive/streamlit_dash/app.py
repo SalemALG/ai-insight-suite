@@ -1,10 +1,16 @@
 from __future__ import annotations
 
 import io
+import sys
+from pathlib import Path
 
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+
+# Add the project root to Python path
+project_root = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(project_root))
 
 from ai_insight_suite.services.predictive.app.pipelines.forecast import forecast_dataframe
 from ai_insight_suite.services.predictive.app.pipelines.churn import score_churn

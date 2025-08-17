@@ -1,9 +1,15 @@
 from __future__ import annotations
 
 import json
+import sys
+from pathlib import Path
 
 import pandas as pd
 import streamlit as st
+
+# Add the project root to Python path
+project_root = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(project_root))
 
 from ai_insight_suite.libs.common.storage import output_path, save_upload
 from ai_insight_suite.services.doc_automation.app.pipelines.ocr import ocr_document
