@@ -1,0 +1,20 @@
+INVOICE #INV-2024-001
+
+Bill To:
+John Smith
+john.smith@email.com
+Phone: +1-555-123-4567
+
+Date: 2024-01-15
+Due Date: 2024-02-15
+
+DESCRIPTION                QTY    RATE      AMOUNT
+Consulting Services         10    $150.00   $1,500.00
+Project Management          5     $200.00   $1,000.00
+
+                           Subtotal:  $2,500.00
+                           Tax (8%):    $200.00
+                           Total:     $2,700.00
+
+Payment Terms: Net 30 days
+Currency: USD

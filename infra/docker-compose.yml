@@ -1,0 +1,59 @@
+version: '3.9'
+
+services:
+  doc-api:
+    build:
+      context: ..
+      dockerfile: ai-insight-suite/services/doc-automation/Dockerfile
+    container_name: doc-api
+    env_file: ../.env
+    ports:
+      - '8001:8000'
+    volumes:
+      - ../ai-insight-suite:/app/ai-insight-suite
+      - ../ai-insight-suite/data:/app/ai-insight-suite/data
+    command: uvicorn ai_insight_suite.services.doc_automation.app.main:app --host 0.0.0.0 --port 8000
+
+  doc-streamlit:
+    build:
+      context: ..
+      dockerfile: ai-insight-suite/services/doc-automation/Dockerfile
+    container_name: doc-streamlit
+    env_file: ../.env
+    ports:
+      - '8501:8501'
+    volumes:
+      - ../ai-insight-suite:/app/ai-insight-suite
+      - ../ai-insight-suite/data:/app/ai-insight-suite/data
+    command: streamlit run ai-insight-suite/services/doc-automation/streamlit_demo/app.py --server.port=8501 --server.address=0.0.0.0
+
+  pred-api:
+    build:
+      context: ..
+      dockerfile: ai-insight-suite/services/predictive/Dockerfile
+    container_name: pred-api
+    env_file: ../.env
+    ports:
+      - '8002:8000'
+    volumes:
+      - ../ai-insight-suite:/app/ai-insight-suite
+      - ../ai-insight-suite/data:/app/ai-insight-suite/data
+    command: uvicorn ai_insight_suite.services.predictive.app.main:app --host 0.0.0.0 --port 8000
+
+  pred-streamlit:
+    build:
+      context: ..
+      dockerfile: ai-insight-suite/services/predictive/Dockerfile
+    container_name: pred-streamlit
+    env_file: ../.env
+    ports:
+      - '8502:8501'
+    volumes:
+      - ../ai-insight-suite:/app/ai-insight-suite
+      - ../ai-insight-suite/data:/app/ai-insight-suite/data
+    command: streamlit run ai-insight-suite/services/predictive/streamlit_dash/app.py --server.port=8501 --server.address=0.0.0.0
+
+volumes:
+  data:
+
+

@@ -1,0 +1,46 @@
+name: ci
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install system deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tesseract-ocr poppler-utils
+      - name: Install tooling
+        run: |
+          python -m pip install -U pip
+          pip install black isort flake8 mypy pytest
+      - name: Install dependencies (doc-automation)
+        run: |
+          pip install -r ai-insight-suite/services/doc-automation/requirements.txt
+      - name: Install dependencies (predictive)
+        run: |
+          pip install -r ai-insight-suite/services/predictive/requirements.txt
+      - name: Install common libs
+        run: |
+          pip install -r ai-insight-suite/libs/common/requirements.txt || true
+      - name: Lint
+        run: |
+          black --check ai-insight-suite
+          isort --check-only ai-insight-suite
+          flake8 ai-insight-suite
+          mypy --config-file ai-insight-suite/pyproject.toml ai-insight-suite
+      - name: Tests (doc-automation)
+        run: pytest -q ai-insight-suite/services/doc-automation/tests
+      - name: Tests (predictive)
+        run: pytest -q ai-insight-suite/services/predictive/tests
+
+

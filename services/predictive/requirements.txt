@@ -1,0 +1,22 @@
+fastapi==0.114.0
+uvicorn[standard]==0.30.6
+python-multipart==0.0.9
+pydantic==2.8.2
+pandas==2.2.2
+numpy==2.0.1
+prophet==1.1.5; platform_system != 'Windows'
+cmdstanpy==1.2.4; platform_system != 'Windows'
+statsmodels==0.14.2
+xgboost==2.1.1
+lightgbm==4.5.0
+scikit-learn==1.5.1
+matplotlib==3.9.2
+plotly==5.23.0
+streamlit==1.37.1
+structlog==24.4.0
+SQLAlchemy==2.0.32
+apscheduler==3.10.4
+gspread==6.1.2
+openpyxl==3.1.5
+
+
